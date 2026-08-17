@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Merge PDF Online Free – Combine & Organize PDFs | fold.pdf</title>
-  <meta name="description" content="Merge PDF files and images online for free with fold.pdf. Reorder pages visually, remove unwanted pages, split PDFs, and download in seconds. No signup required.">
+  <meta name="description" content="Merge PDF files and images online for free with fold.pdf. Reorder pages visually, remove unwanted pages, split PDFs, sign documents, and download in seconds. No signup required.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0e0d0b">
   <link rel="canonical" href="https://pdf-merger-sepia.vercel.app/">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Merge PDF Online Free – fold.pdf">
-  <meta property="og:description" content="Combine PDFs and images, visually reorder pages, remove pages, split documents, and download your finished PDF for free.">
+  <meta property="og:description" content="Combine PDFs and images, visually reorder pages, split documents, add a visual signature, and download your finished PDF for free.">
   <meta property="og:url" content="https://pdf-merger-sepia.vercel.app/">
   <meta property="og:site_name" content="fold.pdf">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Merge PDF Online Free – fold.pdf">
-  <meta name="twitter:description" content="Merge, organize and split PDF files online with a fast visual PDF workspace.">
+  <meta name="twitter:description" content="Merge, organize, split and visually sign PDF files online with one workspace.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,18 +30,15 @@
     "url": "https://pdf-merger-sepia.vercel.app/",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Any",
-    "description": "A browser-based PDF tool for merging, organizing and splitting PDF files and images.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
+    "description": "A browser-based PDF workspace for merging, organizing, splitting and visually signing PDF files and images.",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
     "featureList": [
       "Merge PDF files",
       "Merge images into PDF",
       "Visual page reordering",
       "Remove individual pages",
       "Split PDFs by page range",
+      "Draw or type a visual PDF signature",
       "Import from URL or Google Drive"
     ]
   }
@@ -50,68 +47,12 @@
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--bg:#0e0d0b;--surface:#181714;--surface2:#211f1b;--border:#2e2b25;--border2:#3d3930;--text:#e8e2d9;--muted:#9a9084;--accent:#e05c1a;--accent2:#f0a040;--green:#4caf7d;--max:1120px}
-    html{scroll-behavior:smooth}
-    body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;line-height:1.65;min-height:100vh}
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
-    header{border-bottom:1px solid var(--border);background:rgba(14,13,11,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20}
-    nav{height:64px;display:flex;align-items:center;gap:24px}
-    .logo{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.65rem;margin-right:auto}
-    .logo em{color:var(--accent);font-style:normal}
-    .navlink{font-size:.75rem;color:var(--muted);font-weight:600}
-    .navlink:hover{color:var(--text)}
-    .nav-cta,.btn-primary{background:var(--accent);color:#fff;border-radius:7px;font-weight:700}
-    .nav-cta{padding:9px 14px;font-size:.72rem}
-    .hero{padding:92px 0 70px;border-bottom:1px solid var(--border);overflow:hidden;position:relative}
-    .hero::after{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(224,92,26,.12);filter:blur(90px);right:-170px;top:-190px;pointer-events:none}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);background:var(--surface);padding:7px 11px;border-radius:999px;color:var(--muted);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:24px}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
-    h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3.2rem,7vw,6.6rem);line-height:.94;max-width:850px;letter-spacing:-.035em}
-    h1 em{color:var(--accent);font-style:italic}
-    .sub{max-width:690px;color:var(--muted);font-size:1.02rem;margin-top:26px}
-    .actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:30px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:7px;font-size:.8rem;font-weight:700;border:1px solid var(--border2);transition:.18s ease}
-    .btn-primary{border-color:var(--accent);padding:14px 21px}
-    .btn-primary:hover{filter:brightness(1.12);transform:translateY(-1px)}
-    .btn-secondary{background:var(--surface);color:var(--text)}
-    .btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
-    .trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:.72rem}
-    .trust span{display:flex;gap:6px;align-items:center}
-    section{padding:72px 0}
-    .section-head{max-width:700px;margin-bottom:30px}
-    .kicker{color:var(--accent2);font-size:.65rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;margin-bottom:9px}
-    h2{font-family:'Instrument Serif',serif;font-size:clamp(2.1rem,4vw,3.5rem);font-weight:400;line-height:1.05}
-    .section-copy{color:var(--muted);margin-top:13px;font-size:.9rem}
-    .steps,.features,.usecases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px}
-    .card:hover{border-color:var(--border2)}
-    .num{font-family:'Instrument Serif',serif;color:var(--accent);font-size:2rem;font-style:italic;margin-bottom:16px}
-    .card h3{font-size:.9rem;margin-bottom:8px}
-    .card p{color:var(--muted);font-size:.78rem}
-    .feature-icon{font-size:1.45rem;margin-bottom:14px}
-    .privacy{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}
-    .privacy-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-    .privacy-note{background:var(--bg);border:1px solid var(--border2);border-radius:12px;padding:24px;color:var(--muted);font-size:.78rem}
-    .privacy-note strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:8px}
-    .tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .tool-card{display:flex;justify-content:space-between;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:25px;transition:.18s ease}
-    .tool-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-    .tool-card span{color:var(--muted);font-size:.75rem;display:block;margin-top:6px}
-    .arrow{color:var(--accent);font-size:1.25rem}
-    .faq{max-width:820px}
-    details{border-bottom:1px solid var(--border);padding:20px 0}
-    summary{cursor:pointer;font-size:.87rem;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}
-    summary::after{content:"+";color:var(--accent)}
-    details[open] summary::after{content:"–"}
-    details p{color:var(--muted);font-size:.8rem;margin-top:12px;max-width:730px}
-    .final{padding:78px 0;text-align:center;border-top:1px solid var(--border)}
-    .final h2{max-width:720px;margin:auto}
-    .final .actions{justify-content:center}
-    footer{border-top:1px solid var(--border);padding:25px 0;color:var(--muted);font-size:.7rem}
-    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    .footer-links{display:flex;gap:18px}
-    @media(max-width:800px){.steps,.features,.usecases{grid-template-columns:1fr}.privacy-grid{grid-template-columns:1fr}.tools-grid{grid-template-columns:1fr}.navlink{display:none}.hero{padding-top:65px}h1{font-size:clamp(3rem,15vw,5rem)}}
-    @media(max-width:480px){.wrap{width:min(var(--max),calc(100% - 28px))}.hero{padding:54px 0}.actions .btn{width:100%}.trust{display:grid;gap:8px}.card,.tool-card{padding:20px}}
+    html{scroll-behavior:smooth}body{background:radial-gradient(circle at 80% -10%,rgba(224,92,26,.10),transparent 32%),var(--bg);color:var(--text);font-family:'Syne',sans-serif;line-height:1.65;min-height:100vh}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    header{border-bottom:1px solid var(--border);background:rgba(14,13,11,.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:20}nav{height:64px;display:flex;align-items:center;gap:22px}.logo{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.65rem;margin-right:auto}.logo em{color:var(--accent);font-style:normal}.navlink{font-size:.75rem;color:var(--muted);font-weight:600}.navlink:hover{color:var(--text)}.nav-cta,.btn-primary{background:linear-gradient(135deg,var(--accent),#c94710);color:#fff;border-radius:8px;font-weight:700}.nav-cta{padding:9px 14px;font-size:.72rem}
+    .hero{padding:92px 0 70px;border-bottom:1px solid var(--border);overflow:hidden;position:relative}.hero::after{content:"";position:absolute;width:480px;height:480px;border-radius:50%;background:rgba(224,92,26,.12);filter:blur(90px);right:-170px;top:-190px;pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);background:var(--surface);padding:7px 11px;border-radius:999px;color:var(--muted);font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;margin-bottom:24px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green)}h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3.2rem,7vw,6.6rem);line-height:.94;max-width:850px;letter-spacing:-.035em}h1 em{color:var(--accent);font-style:italic}.sub{max-width:720px;color:var(--muted);font-size:1.02rem;margin-top:26px}.actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:30px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 19px;border-radius:8px;font-size:.8rem;font-weight:700;border:1px solid var(--border2);transition:.18s ease}.btn-primary{border-color:var(--accent);padding:14px 21px}.btn-primary:hover{filter:brightness(1.12);transform:translateY(-1px)}.btn-secondary{background:var(--surface);color:var(--text)}.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}.trust{display:flex;gap:18px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:.72rem}.trust span{display:flex;gap:6px;align-items:center}
+    section{padding:72px 0}.section-head{max-width:700px;margin-bottom:30px}.kicker{color:var(--accent2);font-size:.65rem;text-transform:uppercase;letter-spacing:.13em;font-weight:700;margin-bottom:9px}h2{font-family:'Instrument Serif',serif;font-size:clamp(2.1rem,4vw,3.5rem);font-weight:400;line-height:1.05}.section-copy{color:var(--muted);margin-top:13px;font-size:.9rem}.steps,.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;transition:.18s ease}.card:hover{border-color:var(--border2);transform:translateY(-1px)}.num{font-family:'Instrument Serif',serif;color:var(--accent);font-size:2rem;font-style:italic;margin-bottom:16px}.card h3{font-size:.9rem;margin-bottom:8px}.card p{color:var(--muted);font-size:.78rem}.feature-icon{font-size:1.45rem;margin-bottom:14px}.privacy{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface)}.privacy-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}.privacy-note{background:var(--bg);border:1px solid var(--border2);border-radius:12px;padding:24px;color:var(--muted);font-size:.78rem}.privacy-note strong{display:block;color:var(--text);font-size:.9rem;margin-bottom:8px}
+    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tool-card{display:flex;justify-content:space-between;gap:20px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:25px;transition:.18s ease}.tool-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.16)}.tool-card span{color:var(--muted);font-size:.75rem;display:block;margin-top:6px}.arrow{color:var(--accent);font-size:1.25rem}.faq{max-width:820px}details{border-bottom:1px solid var(--border);padding:20px 0}summary{cursor:pointer;font-size:.87rem;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:20px}summary::after{content:"+";color:var(--accent)}details[open] summary::after{content:"–"}details p{color:var(--muted);font-size:.8rem;margin-top:12px;max-width:730px}.final{padding:78px 0;text-align:center;border-top:1px solid var(--border)}.final h2{max-width:720px;margin:auto}.final .actions{justify-content:center}footer{border-top:1px solid var(--border);padding:25px 0;color:var(--muted);font-size:.7rem}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-links{display:flex;gap:18px}
+    @media(max-width:900px){.tools-grid{grid-template-columns:1fr}.steps,.features{grid-template-columns:1fr}.privacy-grid{grid-template-columns:1fr}.navlink{display:none}.hero{padding-top:65px}h1{font-size:clamp(3rem,15vw,5rem)}}@media(max-width:480px){.wrap{width:min(var(--max),calc(100% - 28px))}.hero{padding:54px 0}.actions .btn{width:100%}.trust{display:grid;gap:8px}.card,.tool-card{padding:20px}}
   </style>
 </head>
 <body>
@@ -120,7 +61,8 @@
       <a class="logo" href="/" aria-label="fold.pdf home">fold<em>.</em>pdf</a>
       <a class="navlink" href="/merge-pdf.html">Merge PDF</a>
       <a class="navlink" href="/split-pdf.html">Split PDF</a>
-      <a class="nav-cta" href="/tool.html">Open PDF Tool</a>
+      <a class="navlink" href="/sign-pdf.html">Sign PDF</a>
+      <a class="nav-cta" href="/tool.html?mode=merge">Open PDF Tool</a>
     </nav>
   </header>
 
@@ -129,104 +71,33 @@
       <div class="wrap">
         <div class="eyebrow"><span class="dot"></span> Free online PDF workspace</div>
         <h1>Merge PDF files <em>visually.</em></h1>
-        <p class="sub">Combine PDFs and images into one document, preview every page, drag pages into the right order, remove what you do not need, and download the finished PDF. No signup required.</p>
+        <p class="sub">Combine PDFs and images into one document, preview every page, drag pages into the right order, split documents, add a visual signature, and download the finished PDF. No signup required.</p>
         <div class="actions">
-          <a class="btn btn-primary" href="/tool.html">Merge PDFs now →</a>
-          <a class="btn btn-secondary" href="/split-pdf.html">Need to split a PDF?</a>
+          <a class="btn btn-primary" href="/tool.html?mode=merge">Merge PDFs now →</a>
+          <a class="btn btn-secondary" href="/tool.html?mode=sign">Sign a PDF</a>
         </div>
-        <div class="trust" aria-label="Product benefits">
-          <span>✓ No signup</span>
-          <span>✓ Visual page reordering</span>
-          <span>✓ PDF + image support</span>
-          <span>✓ Local files processed in your browser</span>
-        </div>
+        <div class="trust" aria-label="Product benefits"><span>✓ No signup</span><span>✓ Visual page reordering</span><span>✓ Merge · Split · Sign</span><span>✓ Local files processed in your browser</span></div>
       </div>
     </section>
 
     <section>
       <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">How it works</div>
-          <h2>From scattered files to one organized PDF.</h2>
-          <p class="section-copy">fold.pdf is built around a visual workflow so you can see the final document before you export it.</p>
-        </div>
-        <div class="steps">
-          <article class="card"><div class="num">01</div><h3>Add PDFs and images</h3><p>Choose files from your device or import a supported document from a URL or shareable Google Drive link.</p></article>
-          <article class="card"><div class="num">02</div><h3>Reorder and clean up</h3><p>Preview pages, drag them into the exact order you want, and remove individual pages before merging.</p></article>
-          <article class="card"><div class="num">03</div><h3>Merge and download</h3><p>Name your output file, merge everything into one PDF, and download the finished document.</p></article>
-        </div>
+        <div class="section-head"><div class="kicker">How it works</div><h2>From scattered files to one organized PDF.</h2><p class="section-copy">fold.pdf is built around a visual workflow so you can see the final document before you export it.</p></div>
+        <div class="steps"><article class="card"><div class="num">01</div><h3>Add PDFs and images</h3><p>Choose files from your device or import a supported document from a URL or shareable Google Drive link.</p></article><article class="card"><div class="num">02</div><h3>Work visually</h3><p>Preview pages, reorder them, choose split ranges, or place a visual signature exactly where it belongs.</p></article><article class="card"><div class="num">03</div><h3>Export</h3><p>Name the output and download the merged, split, or visually signed PDF from the workspace.</p></article></div>
       </div>
     </section>
 
-    <section class="privacy">
-      <div class="wrap privacy-grid">
-        <div>
-          <div class="kicker">Privacy-first workflow</div>
-          <h2>Your local documents stay local.</h2>
-          <p class="section-copy">When you add files directly from your device, the PDF processing happens in your browser using client-side PDF libraries. That means those local files do not need to be uploaded to a document-processing server just to merge them.</p>
-        </div>
-        <div class="privacy-note"><strong>What about URL and Drive imports?</strong>Those features need to fetch the remote file before it can be added to the workspace. If privacy is your priority, download the document first and add it directly from your device.</div>
-      </div>
-    </section>
+    <section class="privacy"><div class="wrap privacy-grid"><div><div class="kicker">Privacy-first workflow</div><h2>Your local documents stay local.</h2><p class="section-copy">When you add files directly from your device, PDF processing happens in your browser using client-side PDF libraries. Local files do not need to be uploaded to a document-processing server just to merge, split, or add a visual signature.</p></div><div class="privacy-note"><strong>What about URL and Drive imports?</strong>Those features need to fetch the remote file before it can be added to the workspace. If privacy is your priority, download the document first and add it directly from your device.</div></div></section>
 
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">More control</div>
-          <h2>More than a basic PDF merger.</h2>
-        </div>
-        <div class="features">
-          <article class="card"><div class="feature-icon">🗂️</div><h3>Visual page preview</h3><p>See the pages you are combining instead of guessing from file names alone.</p></article>
-          <article class="card"><div class="feature-icon">↔️</div><h3>Drag to reorder</h3><p>Move pages into the correct sequence before creating the final document.</p></article>
-          <article class="card"><div class="feature-icon">🖼️</div><h3>PDF and image support</h3><p>Combine PDFs with JPG, PNG, WEBP, TIFF and other supported image formats.</p></article>
-          <article class="card"><div class="feature-icon">✂️</div><h3>Split PDFs</h3><p>Extract selected page ranges or automatically create one PDF per page.</p></article>
-          <article class="card"><div class="feature-icon">🔗</div><h3>Remote imports</h3><p>Bring in supported documents from a direct URL or a shareable Google Drive link.</p></article>
-          <article class="card"><div class="feature-icon">⚡</div><h3>Fast workflow</h3><p>No account creation or onboarding flow between you and the document tool.</p></article>
-        </div>
-      </div>
-    </section>
+    <section><div class="wrap"><div class="section-head"><div class="kicker">More control</div><h2>More than a basic PDF merger.</h2></div><div class="features"><article class="card"><div class="feature-icon">🗂️</div><h3>Visual page preview</h3><p>See the pages you are combining instead of guessing from file names alone.</p></article><article class="card"><div class="feature-icon">↔️</div><h3>Drag to reorder</h3><p>Move pages into the correct sequence before creating the final document.</p></article><article class="card"><div class="feature-icon">✍️</div><h3>Sign PDFs</h3><p>Draw or type a visual electronic signature, then place, move and resize it on the document.</p></article><article class="card"><div class="feature-icon">✂️</div><h3>Split PDFs</h3><p>Extract selected page ranges or automatically create one PDF per page.</p></article><article class="card"><div class="feature-icon">🖼️</div><h3>PDF and image support</h3><p>Combine PDFs with JPG, PNG, WEBP, TIFF and other supported image formats.</p></article><article class="card"><div class="feature-icon">🔗</div><h3>Remote imports</h3><p>Bring in supported documents from a direct URL or a shareable Google Drive link.</p></article></div></div></section>
 
-    <section>
-      <div class="wrap">
-        <div class="section-head">
-          <div class="kicker">Popular tools</div>
-          <h2>Choose what you need to do.</h2>
-        </div>
-        <div class="tools-grid">
-          <a class="tool-card" href="/merge-pdf.html"><div><strong>Merge PDF Online</strong><span>Combine multiple PDFs and images into one organized file.</span></div><div class="arrow">→</div></a>
-          <a class="tool-card" href="/split-pdf.html"><div><strong>Split PDF Online</strong><span>Extract page ranges or separate a PDF into individual files.</span></div><div class="arrow">→</div></a>
-        </div>
-      </div>
-    </section>
+    <section><div class="wrap"><div class="section-head"><div class="kicker">Popular tools</div><h2>Choose what you need to do.</h2></div><div class="tools-grid"><a class="tool-card" href="/merge-pdf.html"><div><strong>Merge PDF Online</strong><span>Combine multiple PDFs and images into one organized file.</span></div><div class="arrow">→</div></a><a class="tool-card" href="/split-pdf.html"><div><strong>Split PDF Online</strong><span>Extract page ranges or separate a PDF into individual files.</span></div><div class="arrow">→</div></a><a class="tool-card" href="/sign-pdf.html"><div><strong>Sign PDF Online</strong><span>Draw or type a signature and place it visually on your PDF.</span></div><div class="arrow">→</div></a></div></div></section>
 
-    <section>
-      <div class="wrap faq">
-        <div class="section-head">
-          <div class="kicker">FAQ</div>
-          <h2>Common PDF merger questions.</h2>
-        </div>
-        <details><summary>Is fold.pdf free to use?</summary><p>Yes. The current PDF merge and split tools can be used without creating an account.</p></details>
-        <details><summary>Can I change the order of PDF pages before merging?</summary><p>Yes. Add your files, preview the pages in the workspace, then drag pages into the order you want before downloading the merged PDF.</p></details>
-        <details><summary>Can I merge images with PDF files?</summary><p>Yes. The tool supports PDF files plus common image formats including JPG, PNG and WEBP, with additional image formats supported by the browser workflow.</p></details>
-        <details><summary>Do files from my computer get uploaded?</summary><p>Files selected directly from your device are processed in the browser. URL and Google Drive imports work differently because the remote file first needs to be fetched.</p></details>
-        <details><summary>Can I split a PDF too?</summary><p>Yes. Switch to the split workflow to choose page ranges, or automatically split a PDF into one file per page.</p></details>
-      </div>
-    </section>
+    <section><div class="wrap faq"><div class="section-head"><div class="kicker">FAQ</div><h2>Common fold.pdf questions.</h2></div><details><summary>Is fold.pdf free to use?</summary><p>Yes. The current merge, split, and visual signing workflows can be used without creating an account.</p></details><details><summary>Can I change the order of PDF pages before merging?</summary><p>Yes. Add your files, preview the pages in the workspace, then drag pages into the order you want before downloading the merged PDF.</p></details><details><summary>Can I add a signature to a PDF?</summary><p>Yes. Sign mode lets you draw or type a visual electronic signature, place it on a page, move it, resize it, and export the PDF. It is not a certificate-based digital signature.</p></details><details><summary>Do files from my computer get uploaded?</summary><p>Files selected directly from your device are processed in the browser. URL and Google Drive imports work differently because the remote file first needs to be fetched.</p></details><details><summary>Can I split a PDF too?</summary><p>Yes. Switch to Split mode to choose page ranges, or automatically split a PDF into one file per page.</p></details></div></section>
 
-    <section class="final">
-      <div class="wrap">
-        <h2>Ready to combine your PDFs?</h2>
-        <p class="section-copy">Open the visual workspace and build your finished document.</p>
-        <div class="actions"><a class="btn btn-primary" href="/tool.html">Open fold.pdf →</a></div>
-      </div>
-    </section>
+    <section class="final"><div class="wrap"><h2>One workspace for the PDF jobs you do most.</h2><p class="section-copy">Merge, split, or visually sign a document without switching between unrelated tools.</p><div class="actions"><a class="btn btn-primary" href="/tool.html?mode=merge">Open fold.pdf →</a></div></div></section>
   </main>
 
-  <footer>
-    <div class="wrap footer-row">
-      <span>© 2026 fold.pdf</span>
-      <div class="footer-links"><a href="/merge-pdf.html">Merge PDF</a><a href="/split-pdf.html">Split PDF</a><a href="/tool.html">PDF Tool</a></div>
-    </div>
-  </footer>
+  <footer><div class="wrap footer-row"><span>© 2026 fold.pdf</span><div class="footer-links"><a href="/merge-pdf.html">Merge PDF</a><a href="/split-pdf.html">Split PDF</a><a href="/sign-pdf.html">Sign PDF</a><a href="/tool.html">PDF Tool</a></div></div></footer>
 </body>
 </html>
