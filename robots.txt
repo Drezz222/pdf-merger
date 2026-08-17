@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pdf-merger-sepia.vercel.app/sitemap.xml
