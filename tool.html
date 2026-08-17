@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>fold.pdf — Pro</title>
+<title>PDF Workspace – Merge, Reorder & Split PDFs | fold.pdf</title>
+<meta name="description" content="Use fold.pdf's visual PDF workspace to merge PDFs and images, reorder or remove pages, split documents, and download the finished file.">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0e0d0b">
+<link rel="canonical" href="https://pdf-merger-sepia.vercel.app/tool.html">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
@@ -25,39 +29,50 @@
 }
 
 body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; font-size:14px; min-height:100vh; line-height:1.5; transition:background .3s,color .3s; }
+a { color:inherit; text-decoration:none; }
+button,input { font:inherit; }
+button:focus-visible,input:focus-visible,.drop-zone:focus-visible,a:focus-visible { outline:2px solid var(--accent2); outline-offset:2px; }
 
-.topbar { display:flex; align-items:center; padding:0 24px; height:56px; border-bottom:1px solid var(--border); background:var(--surface); position:sticky; top:0; z-index:100; gap:12px; }
-.logo { font-family:'Instrument Serif',serif; font-size:1.45rem; font-style:italic; flex-shrink:0; }
+.topbar { display:flex; align-items:center; padding:0 18px; height:58px; border-bottom:1px solid var(--border); background:var(--surface); position:sticky; top:0; z-index:100; gap:12px; }
+.logo { font-family:'Instrument Serif',serif; font-size:1.45rem; font-style:italic; flex-shrink:0; display:flex; align-items:center; }
 .logo em { color:var(--accent); font-style:normal; }
-.logo-badge { font-family:'Syne',sans-serif; font-size:0.58rem; font-style:normal; color:var(--muted); margin-left:4px; }
-.topbar-tabs { display:flex; gap:4px; margin-left:20px; }
-.tab-btn { font-family:'Syne',sans-serif; font-size:0.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; padding:6px 14px; border-radius:4px; border:none; background:transparent; color:var(--muted); cursor:pointer; transition:all .15s; }
+.logo-badge { font-family:'Syne',sans-serif; font-size:0.58rem; font-style:normal; color:var(--muted); margin-left:5px; }
+.topbar-tabs { display:flex; gap:4px; margin-left:14px; }
+.tab-btn { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; padding:7px 12px; border-radius:4px; border:none; background:transparent; color:var(--muted); cursor:pointer; transition:all .15s; }
 .tab-btn:hover { color:var(--text); background:var(--surface2); }
 .tab-btn.active { background:var(--accent); color:#fff; }
-.topbar-right { margin-left:auto; }
+.topbar-right { margin-left:auto; display:flex; align-items:center; gap:8px; }
+.home-link { font-size:.65rem; font-weight:700; color:var(--muted); padding:7px 9px; border-radius:4px; }
+.home-link:hover { color:var(--text); background:var(--surface2); }
+.local-badge { display:flex; align-items:center; gap:5px; font-size:.61rem; color:var(--green); border:1px solid color-mix(in srgb,var(--green) 35%,var(--border)); padding:5px 8px; border-radius:999px; white-space:nowrap; }
 .theme-btn { width:34px; height:34px; border-radius:50%; border:1px solid var(--border2); background:var(--surface2); color:var(--text); font-size:.95rem; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .15s; }
 .theme-btn:hover { border-color:var(--accent); }
 
-.app { display:flex; height:calc(100vh - 56px); overflow:hidden; }
+.app { display:flex; height:calc(100vh - 58px); overflow:hidden; }
 
 /* LEFT */
-.panel-left { width:340px; flex-shrink:0; border-right:1px solid var(--border); display:flex; flex-direction:column; overflow:hidden; background:var(--surface); }
-.psec { padding:14px 16px; border-bottom:1px solid var(--border); }
-.plabel { font-size:0.62rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
+.panel-left { width:350px; flex-shrink:0; border-right:1px solid var(--border); display:flex; flex-direction:column; overflow:hidden; background:var(--surface); }
+.tool-intro { padding:14px 16px 13px; border-bottom:1px solid var(--border); background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 5%,var(--surface)),var(--surface)); }
+.tool-title { font-family:'Instrument Serif',serif; font-style:italic; font-size:1.15rem; font-weight:400; margin-bottom:2px; }
+.tool-copy { font-size:.66rem; color:var(--muted); line-height:1.55; }
+.privacy-chip { display:inline-flex; align-items:center; gap:5px; margin-top:8px; font-size:.59rem; color:var(--green); }
+.psec { padding:13px 16px; border-bottom:1px solid var(--border); }
+.plabel { font-size:0.60rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); margin-bottom:9px; }
 
-.drop-zone { border:1.5px dashed var(--border2); border-radius:var(--radius); padding:18px 14px; text-align:center; cursor:pointer; transition:all .2s; }
-.drop-zone:hover,.drop-zone.over { border-color:var(--accent); background:color-mix(in srgb,var(--accent) 6%,transparent); }
-.dz-icon { font-size:1.6rem; margin-bottom:6px; }
-.dz-text { font-size:0.75rem; color:var(--muted); }
+.drop-zone { border:1.5px dashed var(--border2); border-radius:var(--radius); padding:18px 14px; text-align:center; cursor:pointer; transition:all .2s; background:color-mix(in srgb,var(--bg) 38%,transparent); }
+.drop-zone:hover,.drop-zone.over { border-color:var(--accent); background:color-mix(in srgb,var(--accent) 7%,transparent); transform:translateY(-1px); }
+.dz-icon { font-size:1.55rem; margin-bottom:5px; }
+.dz-text { font-size:0.74rem; color:var(--muted); }
 .dz-text strong { color:var(--accent); cursor:pointer; }
-.dz-types { font-size:0.61rem; color:var(--border2); margin-top:5px; }
+.dz-types { font-size:0.59rem; color:var(--muted); opacity:.7; margin-top:5px; }
+.dz-privacy { font-size:.58rem; color:var(--green); margin-top:7px; }
 #file-input { display:none; }
 
 .row { display:flex; gap:8px; }
-.inp { flex:1; font-family:'Syne',sans-serif; font-size:0.74rem; padding:8px 10px; background:var(--bg); border:1px solid var(--border2); border-radius:var(--radius); color:var(--text); outline:none; transition:border-color .15s; }
+.inp { flex:1; min-width:0; font-family:'Syne',sans-serif; font-size:0.72rem; padding:8px 10px; background:var(--bg); border:1px solid var(--border2); border-radius:var(--radius); color:var(--text); outline:none; transition:border-color .15s; }
 .inp:focus { border-color:var(--accent); }
 .inp::placeholder { color:var(--muted); }
-.btn { font-family:'Syne',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:.05em; padding:8px 14px; border-radius:var(--radius); border:none; cursor:pointer; transition:all .15s; white-space:nowrap; }
+.btn { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:.04em; padding:8px 12px; border-radius:var(--radius); border:none; cursor:pointer; transition:all .15s; white-space:nowrap; }
 .btn.p { background:var(--accent); color:#fff; }
 .btn.p:hover { filter:brightness(1.1); }
 .btn.g { background:var(--surface2); color:var(--text); border:1px solid var(--border2); }
@@ -66,8 +81,11 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 .btn.gd:hover { background:#2a6dd9; }
 .btn.full { width:100%; }
 
-.file-list-area { flex:1; overflow-y:auto; padding:8px 10px; scrollbar-width:thin; scrollbar-color:var(--border2) transparent; }
-.no-files-msg { text-align:center; color:var(--muted); font-size:0.72rem; padding:30px 0; }
+.file-list-head { display:flex; align-items:center; justify-content:space-between; padding:9px 12px 6px; color:var(--muted); font-size:.6rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.clear-btn { border:none; background:transparent; color:var(--muted); font-size:.58rem; cursor:pointer; text-transform:none; letter-spacing:0; padding:3px 5px; border-radius:4px; }
+.clear-btn:hover { color:var(--red); background:color-mix(in srgb,var(--red) 10%,transparent); }
+.file-list-area { flex:1; overflow-y:auto; padding:3px 10px 8px; scrollbar-width:thin; scrollbar-color:var(--border2) transparent; }
+.no-files-msg { text-align:center; color:var(--muted); font-size:0.68rem; padding:20px 0; }
 
 .file-card { background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:7px; overflow:hidden; transition:border-color .15s; animation:cIn .2s ease; }
 @keyframes cIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:translateY(0)} }
@@ -78,36 +96,41 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 .type-badge { font-size:0.52rem; font-weight:700; letter-spacing:.08em; padding:2px 5px; border-radius:3px; flex-shrink:0; color:#fff; }
 .tb-pdf { background:var(--accent); }
 .tb-img { background:var(--blue); }
-.fc-name { flex:1; font-size:0.73rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-.fc-meta { font-size:0.63rem; color:var(--muted); display:flex; gap:6px; align-items:center; }
-.pg-badge { background:color-mix(in srgb,var(--accent2) 15%,transparent); color:var(--accent2); padding:1px 6px; border-radius:10px; font-size:0.6rem; }
-.icon-btn { width:24px; height:24px; border-radius:4px; border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:.8rem; display:flex; align-items:center; justify-content:center; transition:all .15s; }
+.fc-name { flex:1; font-size:0.71rem; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.fc-meta { font-size:0.61rem; color:var(--muted); display:flex; gap:6px; align-items:center; }
+.pg-badge { background:color-mix(in srgb,var(--accent2) 15%,transparent); color:var(--accent2); padding:1px 6px; border-radius:10px; font-size:0.58rem; }
+.icon-btn { width:25px; height:25px; border-radius:4px; border:none; background:transparent; color:var(--muted); cursor:pointer; font-size:.8rem; display:flex; align-items:center; justify-content:center; transition:all .15s; }
 .icon-btn:hover { background:var(--border); color:var(--text); }
 .icon-btn.del:hover { background:color-mix(in srgb,var(--red) 15%,transparent); color:var(--red); }
 
-.panel-bottom { padding:12px 14px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:9px; background:var(--surface); }
+.panel-bottom { padding:11px 14px 13px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:8px; background:var(--surface); }
+.output-label { font-size:.58rem; font-weight:700; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; }
 .out-row { display:flex; gap:8px; align-items:center; }
-.out-sfx { font-size:0.7rem; color:var(--muted); white-space:nowrap; }
+.out-sfx { font-size:0.68rem; color:var(--muted); white-space:nowrap; }
 .pw-row { display:flex; gap:8px; align-items:center; }
-.pw-label { font-size:0.67rem; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:5px; user-select:none; white-space:nowrap; }
+.pw-label { font-size:0.65rem; color:var(--muted); cursor:pointer; display:flex; align-items:center; gap:5px; user-select:none; white-space:nowrap; }
 .pw-label input { accent-color:var(--accent); }
-.pw-inp { flex:1; font-family:'Syne',sans-serif; font-size:0.74rem; padding:7px 10px; background:var(--bg); border:1px solid var(--border2); border-radius:var(--radius); color:var(--text); outline:none; display:none; }
+.pw-inp { flex:1; min-width:0; font-family:'Syne',sans-serif; font-size:0.72rem; padding:7px 10px; background:var(--bg); border:1px solid var(--border2); border-radius:var(--radius); color:var(--text); outline:none; display:none; }
 .pw-inp.show { display:block; }
 .pw-inp:focus { border-color:var(--accent); }
-.action-btn { font-family:'Instrument Serif',serif; font-style:italic; font-size:1rem; padding:12px; border-radius:var(--radius); border:none; background:var(--accent); color:#fff; cursor:pointer; transition:all .2s; width:100%; }
-.action-btn:hover { filter:brightness(1.12); }
-.action-btn:disabled { opacity:.4; cursor:not-allowed; filter:none; }
+.action-btn { font-family:'Instrument Serif',serif; font-style:italic; font-size:1.02rem; padding:12px; border-radius:var(--radius); border:none; background:var(--accent); color:#fff; cursor:pointer; transition:all .2s; width:100%; box-shadow:0 5px 18px rgba(224,92,26,.16); }
+.action-btn:hover:not(:disabled) { filter:brightness(1.12); transform:translateY(-1px); }
+.action-btn:disabled { opacity:.35; cursor:not-allowed; filter:none; box-shadow:none; }
 
 /* CENTER */
 .panel-center { flex:1; overflow-y:auto; background:var(--bg); display:flex; flex-direction:column; scrollbar-width:thin; scrollbar-color:var(--border2) transparent; }
-.prev-header { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; background:var(--surface); position:sticky; top:0; z-index:10; }
-.prev-title { font-size:0.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
-.prev-hint { font-size:0.63rem; color:var(--border2); }
-.prev-info { font-size:0.68rem; color:var(--muted); margin-left:auto; }
+.prev-header { padding:12px 18px; min-height:45px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; background:var(--surface); position:sticky; top:0; z-index:10; }
+.prev-title { font-size:0.66rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
+.prev-hint { font-size:0.62rem; color:var(--muted); opacity:.65; }
+.prev-info { font-size:0.66rem; color:var(--muted); margin-left:auto; }
 
-.prev-empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--border2); gap:10px; padding:40px; }
-.prev-empty-icon { font-size:2.8rem; }
-.prev-empty-text { font-family:'Instrument Serif',serif; font-style:italic; font-size:1rem; }
+.prev-empty { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; color:var(--muted); gap:10px; padding:34px; text-align:center; }
+.prev-empty-icon { font-size:2.65rem; filter:grayscale(.15); }
+.prev-empty-text { font-family:'Instrument Serif',serif; font-style:italic; font-size:1.35rem; color:var(--text); }
+.prev-empty-sub { font-size:.69rem; max-width:450px; color:var(--muted); }
+.empty-steps { display:grid; grid-template-columns:repeat(3,minmax(110px,1fr)); gap:8px; width:min(520px,100%); margin-top:8px; }
+.empty-step { border:1px solid var(--border); background:var(--surface); border-radius:7px; padding:10px; font-size:.62rem; line-height:1.45; color:var(--muted); }
+.empty-step strong { color:var(--text); display:block; font-size:.64rem; margin-bottom:2px; }
 
 .pages-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(128px,1fr)); gap:14px; padding:18px; }
 
@@ -123,8 +146,8 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 .pg-spinner { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--border2); }
 .pg-num { position:absolute; bottom:4px; right:5px; font-size:0.58rem; background:rgba(0,0,0,.55); color:#fff; padding:1px 4px; border-radius:3px; pointer-events:none; }
 .pg-dot { position:absolute; top:4px; left:4px; width:7px; height:7px; border-radius:50%; pointer-events:none; }
-.pg-del { position:absolute; top:3px; right:3px; width:19px; height:19px; background:var(--red); color:#fff; border:none; border-radius:50%; font-size:0.6rem; cursor:pointer; display:none; align-items:center; justify-content:center; }
-.pg-thumb:hover .pg-del { display:flex; }
+.pg-del { position:absolute; top:3px; right:3px; width:21px; height:21px; background:var(--red); color:#fff; border:none; border-radius:50%; font-size:0.62rem; cursor:pointer; display:none; align-items:center; justify-content:center; }
+.pg-thumb:hover .pg-del,.pg-del:focus { display:flex; }
 .pg-label { font-size:0.6rem; color:var(--muted); text-align:center; max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
 .c0{background:#e05c1a}.c1{background:#4a90d9}.c2{background:#4caf7d}
@@ -136,6 +159,8 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 .split-list { display:flex; flex-direction:column; gap:7px; }
 .split-item { display:flex; align-items:center; gap:8px; padding:9px 12px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); font-size:0.73rem; }
 .split-item .rl { color:var(--accent2); font-size:0.65rem; }
+.split-help { background:color-mix(in srgb,var(--accent) 6%,var(--surface)); border:1px solid color-mix(in srgb,var(--accent) 20%,var(--border)); padding:10px 12px; border-radius:7px; font-size:.65rem; color:var(--muted); line-height:1.55; }
+.split-help strong { color:var(--text); }
 
 /* Progress overlay */
 .prog-overlay { position:fixed; inset:0; background:rgba(0,0,0,.72); display:none; align-items:center; justify-content:center; z-index:999; backdrop-filter:blur(4px); }
@@ -146,7 +171,7 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 .prog-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); border-radius:2px; transition:width .3s; width:0%; }
 
 /* Toast */
-.toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(16px); background:var(--surface); border:1px solid var(--border2); border-radius:8px; padding:11px 18px; font-size:0.78rem; box-shadow:0 8px 28px rgba(0,0,0,.45); opacity:0; transition:all .25s; z-index:9999; white-space:nowrap; pointer-events:none; }
+.toast { position:fixed; bottom:22px; left:50%; transform:translateX(-50%) translateY(16px); background:var(--surface); border:1px solid var(--border2); border-radius:8px; padding:11px 18px; font-size:0.76rem; box-shadow:0 8px 28px rgba(0,0,0,.45); opacity:0; transition:all .25s; z-index:9999; white-space:nowrap; pointer-events:none; }
 .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
 .toast.success { border-color:var(--green); color:var(--green); }
 .toast.error { border-color:var(--red); color:var(--red); }
@@ -162,24 +187,44 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
 
+@media(max-width:860px){
+  .local-badge{display:none}
+  .panel-left{width:320px}
+}
 @media(max-width:680px){
-  .app{flex-direction:column;height:auto}
-  .panel-left{width:100%;border-right:none;border-bottom:1px solid var(--border)}
-  .panel-center{min-height:60vh}
-  .topbar-tabs{display:none}
+  .topbar{height:auto;min-height:58px;padding:8px 10px;gap:6px;flex-wrap:wrap}
+  .logo{font-size:1.3rem}
+  .logo-badge,.home-link{display:none}
+  .topbar-tabs{display:flex;margin-left:auto;order:2}
+  .topbar-right{margin-left:0;order:3}
+  .tab-btn{font-size:.59rem;padding:6px 8px}
+  .theme-btn{width:30px;height:30px}
+  .app{flex-direction:column;height:auto;min-height:calc(100vh - 58px);overflow:visible}
+  .panel-left{width:100%;border-right:none;border-bottom:1px solid var(--border);overflow:visible}
+  .tool-intro{padding:12px 14px}
+  .psec{padding:12px 14px}
+  .file-list-area{max-height:260px}
+  .panel-bottom{position:sticky;bottom:0;z-index:30;box-shadow:0 -8px 20px rgba(0,0,0,.16)}
+  .panel-center{min-height:55vh;overflow:visible}
+  .prev-header{position:sticky;top:58px}
+  .pages-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;padding:12px}
+  .empty-steps{grid-template-columns:1fr}
+  .prev-empty{padding:30px 18px}
 }
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="logo">fold<em>.</em>pdf <span class="logo-badge">PRO</span></div>
-  <div class="topbar-tabs">
-    <button class="tab-btn active" id="tab-merge" onclick="setMode('merge')">Merge</button>
-    <button class="tab-btn" id="tab-split" onclick="setMode('split')">Split</button>
+  <a class="logo" href="/" aria-label="fold.pdf home">fold<em>.</em>pdf <span class="logo-badge">WORKSPACE</span></a>
+  <div class="topbar-tabs" role="tablist" aria-label="PDF tool mode">
+    <button class="tab-btn active" id="tab-merge" type="button" role="tab" aria-selected="true" onclick="setMode('merge')">Merge PDF</button>
+    <button class="tab-btn" id="tab-split" type="button" role="tab" aria-selected="false" onclick="setMode('split')">Split PDF</button>
   </div>
   <div class="topbar-right">
-    <button class="theme-btn" onclick="toggleTheme()">🌓</button>
+    <a class="home-link" href="/">← Home</a>
+    <span class="local-badge" title="Files selected from your device are processed locally in your browser">● Local file processing</span>
+    <button class="theme-btn" type="button" aria-label="Toggle light or dark theme" onclick="toggleTheme()">🌓</button>
   </div>
 </div>
 
@@ -187,45 +232,54 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
   <!-- LEFT PANEL -->
   <div class="panel-left">
 
+    <div class="tool-intro">
+      <h1 class="tool-title">Build your PDF</h1>
+      <p class="tool-copy">Add documents, arrange pages visually, then merge or split them from one workspace.</p>
+      <div class="privacy-chip">✓ Files from your device stay in your browser</div>
+    </div>
+
     <div class="psec">
-      <div class="plabel">Add Files</div>
-      <div class="drop-zone" id="drop-zone">
+      <div class="plabel">1 · Add Files</div>
+      <div class="drop-zone" id="drop-zone" role="button" tabindex="0" aria-label="Add PDF or image files">
         <div class="dz-icon">📄</div>
-        <div class="dz-text">Drop files here or <strong id="browse-btn">browse</strong></div>
+        <div class="dz-text">Drop PDFs or images here<br>or <strong id="browse-btn">browse files</strong></div>
         <div class="dz-types">PDF · JPG · PNG · WEBP · TIFF · BMP</div>
-        <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.tiff,.tif,.bmp,application/pdf,image/*">
+        <div class="dz-privacy">Local files are processed on this device</div>
+        <input type="file" id="file-input" multiple accept=".pdf,.jpg,.jpeg,.png,.webp,.tiff,.tif,.bmp,application/pdf,image/*" aria-label="Choose PDF or image files">
       </div>
     </div>
 
     <div class="psec">
-      <div class="plabel">Import from URL</div>
+      <div class="plabel">Optional · Import from URL</div>
       <div class="row">
-        <input type="text" class="inp" id="url-input" placeholder="https://example.com/file.pdf">
-        <button class="btn p" onclick="importUrl()">Fetch</button>
+        <input type="url" class="inp" id="url-input" aria-label="PDF or image URL" placeholder="https://example.com/file.pdf">
+        <button class="btn p" type="button" onclick="importUrl()">Fetch</button>
       </div>
     </div>
 
     <div class="psec">
-      <div class="plabel">Google Drive</div>
-      <button class="btn gd full" onclick="showGdrive()">📁 Import from Google Drive</button>
+      <div class="plabel">Optional · Google Drive</div>
+      <button class="btn gd full" type="button" onclick="showGdrive()">📁 Import shareable file</button>
     </div>
 
+    <div class="file-list-head"><span>2 · Files</span><button class="clear-btn" type="button" onclick="clearAll()">Clear all</button></div>
     <div class="file-list-area" id="file-list">
-      <div class="no-files-msg">No files added yet</div>
+      <div class="no-files-msg">Your files will appear here.</div>
     </div>
 
     <div class="panel-bottom">
+      <div class="output-label">3 · Export</div>
       <div class="out-row">
-        <input type="text" class="inp" id="output-name" value="merged" placeholder="filename">
+        <input type="text" class="inp" id="output-name" value="merged" aria-label="Output file name" placeholder="filename">
         <span class="out-sfx">.pdf</span>
       </div>
       <div class="pw-row" id="pw-row">
         <label class="pw-label">
           <input type="checkbox" id="pw-check" onchange="togglePw()"> 🔒 Password
         </label>
-        <input type="password" class="pw-inp" id="pw-input" placeholder="enter password">
+        <input type="password" class="pw-inp" id="pw-input" aria-label="PDF password" placeholder="enter password">
       </div>
-      <button class="action-btn" id="action-btn" onclick="runAction()">Merge &amp; Download</button>
+      <button class="action-btn" id="action-btn" type="button" onclick="runAction()" disabled>Merge &amp; Download</button>
     </div>
   </div>
 
@@ -234,28 +288,34 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
     <div class="prev-header">
       <span class="prev-title" id="prev-title">Page Preview</span>
       <span class="prev-hint" id="prev-hint">↔ drag pages to reorder</span>
-      <span class="prev-info" id="prev-info"></span>
+      <span class="prev-info" id="prev-info">0 pages</span>
     </div>
     <div class="prev-empty" id="prev-empty">
       <div class="prev-empty-icon">🗂️</div>
-      <div class="prev-empty-text">Add files to see previews</div>
+      <div class="prev-empty-text">Your pages will appear here</div>
+      <p class="prev-empty-sub">Add PDFs or images from the left panel. Once loaded, you can preview the document before exporting it.</p>
+      <div class="empty-steps">
+        <div class="empty-step"><strong>1. Add files</strong>Drop PDFs or images into the workspace.</div>
+        <div class="empty-step"><strong>2. Arrange pages</strong>Drag thumbnails and remove anything you do not need.</div>
+        <div class="empty-step"><strong>3. Export</strong>Merge into one PDF or switch to Split mode.</div>
+      </div>
     </div>
     <div class="pages-grid" id="pages-grid" style="display:none"></div>
     <div class="split-wrap" id="split-wrap">
       <div class="plabel">Split Ranges</div>
-      <p style="font-size:.72rem;color:var(--muted)">Define page ranges to extract as separate PDFs from the first loaded PDF.</p>
+      <div class="split-help"><strong>Choose what to extract.</strong> Enter a page range such as <b>1-3</b>, a single page such as <b>5</b>, or a combined selection such as <b>2-4,7</b>.</div>
       <div class="row">
-        <input type="text" class="inp" id="split-inp" placeholder="e.g. 1-3 or 5 or 2-4,7">
-        <button class="btn p" onclick="addSplitRange()">Add</button>
+        <input type="text" class="inp" id="split-inp" aria-label="Page ranges to split" placeholder="e.g. 1-3 or 5 or 2-4,7">
+        <button class="btn p" type="button" onclick="addSplitRange()">Add range</button>
       </div>
       <div class="split-list" id="split-list"></div>
-      <button class="btn g full" onclick="autoSplit()">Auto-split: one PDF per page</button>
+      <button class="btn g full" type="button" onclick="autoSplit()">Auto-split: one PDF per page</button>
     </div>
   </div>
 </div>
 
 <!-- Progress -->
-<div class="prog-overlay" id="prog-overlay">
+<div class="prog-overlay" id="prog-overlay" aria-live="polite">
   <div class="prog-card">
     <div class="prog-label" id="prog-label">Processing…</div>
     <div class="prog-track"><div class="prog-fill" id="prog-fill"></div></div>
@@ -263,18 +323,18 @@ body { background:var(--bg); color:var(--text); font-family:'Syne',sans-serif; f
 </div>
 
 <!-- Toast -->
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- Google Drive Modal -->
 <div class="modal-bg" id="gdrive-modal">
-  <div class="modal">
-    <div class="modal-title">Google Drive Import</div>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="gdrive-title">
+    <div class="modal-title" id="gdrive-title">Google Drive Import</div>
     <div class="modal-sub">Paste a shareable Google Drive link below</div>
-    <input type="text" class="inp" id="gdrive-inp" placeholder="https://drive.google.com/file/d/.../view" style="width:100%">
+    <input type="url" class="inp" id="gdrive-inp" aria-label="Shareable Google Drive URL" placeholder="https://drive.google.com/file/d/.../view" style="width:100%">
     <div class="modal-note">⚠️ The file must be set to <strong>"Anyone with the link can view"</strong>. Private Drive files cannot be fetched due to browser CORS restrictions — download them first and use the file picker.</div>
     <div class="modal-actions">
-      <button class="btn g" onclick="hideGdrive()">Cancel</button>
-      <button class="btn gd" onclick="importGdrive()">Import</button>
+      <button class="btn g" type="button" onclick="hideGdrive()">Cancel</button>
+      <button class="btn gd" type="button" onclick="importGdrive()">Import</button>
     </div>
   </div>
 </div>
@@ -305,14 +365,21 @@ function toggleTheme() {
 // ── MODE ──
 function setMode(m) {
   mode = m;
-  document.getElementById('tab-merge').classList.toggle('active', m === 'merge');
-  document.getElementById('tab-split').classList.toggle('active', m === 'split');
+  const mergeTab = document.getElementById('tab-merge');
+  const splitTab = document.getElementById('tab-split');
+  mergeTab.classList.toggle('active', m === 'merge');
+  splitTab.classList.toggle('active', m === 'split');
+  mergeTab.setAttribute('aria-selected', String(m === 'merge'));
+  splitTab.setAttribute('aria-selected', String(m === 'split'));
   document.getElementById('pages-grid').style.display = m === 'merge' ? 'grid' : 'none';
   document.getElementById('split-wrap').classList.toggle('active', m === 'split');
   document.getElementById('action-btn').textContent   = m === 'merge' ? 'Merge & Download' : 'Split & Download';
   document.getElementById('prev-title').textContent   = m === 'merge' ? 'Page Preview' : 'Split Mode';
   document.getElementById('prev-hint').style.display  = m === 'merge' ? '' : 'none';
   document.getElementById('pw-row').style.display     = m === 'merge' ? 'flex' : 'none';
+  const out = document.getElementById('output-name');
+  if (m === 'split' && out.value === 'merged') out.value = 'split';
+  if (m === 'merge' && out.value === 'split') out.value = 'merged';
   refreshEmpty();
 }
 
@@ -328,6 +395,11 @@ document.getElementById('file-input').addEventListener('change', e => {
 });
 
 const DZ = document.getElementById('drop-zone');
+DZ.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    e.preventDefault(); document.getElementById('file-input').click();
+  }
+});
 DZ.addEventListener('dragover', e => { e.preventDefault(); DZ.classList.add('over'); });
 DZ.addEventListener('dragleave', () => DZ.classList.remove('over'));
 DZ.addEventListener('drop', e => {
@@ -382,7 +454,7 @@ async function loadImg(entry) {
   renderGrid();
 }
 
-// ── REMOVE FILE ──
+// ── REMOVE / CLEAR FILES ──
 function removeFile(idx) {
   if (files[idx].imgUrl) URL.revokeObjectURL(files[idx].imgUrl);
   pageOrder = pageOrder
@@ -394,10 +466,22 @@ function removeFile(idx) {
   refreshEmpty();
 }
 
+function clearAll() {
+  files.forEach(f => { if (f.imgUrl) URL.revokeObjectURL(f.imgUrl); });
+  files = [];
+  pageOrder = [];
+  splitRanges = [];
+  renderFileList();
+  renderGrid();
+  renderSplitList();
+  refreshEmpty();
+  showToast('Workspace cleared', 'success');
+}
+
 // ── RENDER FILE LIST ──
 function renderFileList() {
   const list = document.getElementById('file-list');
-  if (!files.length) { list.innerHTML = '<div class="no-files-msg">No files added yet</div>'; return; }
+  if (!files.length) { list.innerHTML = '<div class="no-files-msg">Your files will appear here.</div>'; return; }
   list.innerHTML = '';
 
   files.forEach((entry, idx) => {
@@ -412,11 +496,11 @@ function renderFileList() {
 
     card.innerHTML = `
       <div class="fc-header">
-        <span class="drag-handle">⠿</span>
+        <span class="drag-handle" title="Drag to reorder files">⠿</span>
         <span class="type-badge ${badge}">${label}</span>
         <span class="fc-name" title="${entry.name}">${entry.name}</span>
         <div class="fc-meta">${pgsH}<span>${fmtSize(entry.size)}</span></div>
-        <button class="icon-btn del" onclick="removeFile(${idx})">✕</button>
+        <button class="icon-btn del" type="button" aria-label="Remove ${entry.name}" onclick="removeFile(${idx})">✕</button>
       </div>`;
 
     card.addEventListener('dragstart', e => {
@@ -483,7 +567,7 @@ function renderGrid() {
         <div class="pg-spinner" id="ps-${oi}">⋯</div>
         <span class="pg-dot ${entry.color}"></span>
         <span class="pg-num">${oi + 1}</span>
-        <button class="pg-del" onclick="removePageAt(event,${oi})">✕</button>
+        <button class="pg-del" type="button" aria-label="Remove page ${oi + 1}" onclick="removePageAt(event,${oi})">✕</button>
       </div>
       <div class="pg-label" title="${entry.name}">${labelText}</div>`;
 
@@ -525,8 +609,6 @@ function renderGrid() {
   });
 
   refreshEmpty();
-  document.getElementById('prev-info').textContent =
-    `${pageOrder.length} page${pageOrder.length !== 1 ? 's' : ''} · ${files.length} file${files.length !== 1 ? 's' : ''}`;
 }
 
 async function renderPdfThumb(entry, pageNum, oi) {
@@ -565,8 +647,12 @@ function removePageAt(e, oi) {
 
 function refreshEmpty() {
   const has = pageOrder.length > 0;
-  document.getElementById('prev-empty').style.display  = has ? 'none' : 'flex';
-  document.getElementById('pages-grid').style.display  = (has && mode === 'merge') ? 'grid' : 'none';
+  document.getElementById('prev-empty').style.display = has ? 'none' : 'flex';
+  document.getElementById('pages-grid').style.display = (has && mode === 'merge') ? 'grid' : 'none';
+  document.getElementById('action-btn').disabled = !has;
+  document.getElementById('prev-info').textContent = has
+    ? `${pageOrder.length} page${pageOrder.length !== 1 ? 's' : ''} · ${files.length} file${files.length !== 1 ? 's' : ''}`
+    : '0 pages';
 }
 
 // ── URL IMPORT ──
@@ -701,7 +787,7 @@ function renderSplitList() {
     item.className = 'split-item';
     item.innerHTML = `<span class="type-badge tb-pdf">PDF ${i+1}</span>
       <span class="rl">pages ${r}</span>
-      <button class="icon-btn del" style="margin-left:auto" onclick="splitRanges.splice(${i},1);renderSplitList()">✕</button>`;
+      <button class="icon-btn del" type="button" aria-label="Remove split range ${r}" style="margin-left:auto" onclick="splitRanges.splice(${i},1);renderSplitList()">✕</button>`;
     list.appendChild(item);
   });
 }
@@ -787,7 +873,8 @@ function togglePw() {
 }
 
 // ── INIT ──
-refreshEmpty();
+const requestedMode = new URLSearchParams(window.location.search).get('mode');
+setMode(requestedMode === 'split' ? 'split' : 'merge');
 </script>
 </body>
 </html>
