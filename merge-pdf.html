@@ -13,19 +13,19 @@
   <meta property="og:url" content="https://pdf-merger-sepia.vercel.app/merge-pdf.html">
   <meta name="twitter:card" content="summary">
   <style>
-    :root{--bg:#0e0d0b;--surface:#181714;--border:#2e2b25;--text:#e8e2d9;--muted:#a79d91;--accent:#e05c1a}
+    :root{--bg:#0e0d0b;--surface:#181714;--border:#2e2b25;--text:#e8e2d9;--muted:#a79d91;--accent:#b8430f}
     *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif;line-height:1.65}
     a{color:inherit}.wrap{max-width:920px;margin:auto;padding:24px}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.brand{font-size:1.35rem;font-weight:700}.brand em{color:var(--accent);font-style:normal}.cta{display:inline-block;background:var(--accent);color:white;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:700}
-    .hero{padding:72px 0 48px}.eyebrow{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem}h1{font-size:clamp(2.4rem,7vw,4.8rem);line-height:1.02;margin:.25em 0}.lead{font-size:1.15rem;color:var(--muted);max-width:720px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.secondary{display:inline-block;border:1px solid var(--border);text-decoration:none;padding:12px 18px;border-radius:8px}
+    .hero{padding:72px 0 48px}.eyebrow{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:.8rem}h1{font-size:clamp(2.4rem,7vw,4.8rem);line-height:1.02;margin:.25em 0}.lead{font-size:1.15rem;color:var(--muted);max-width:720px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}.secondary{display:inline-block;border:1px solid var(--border);text-decoration:none;padding:12px 18px;border-radius:8px}a:focus-visible,summary:focus-visible{outline:3px solid #f0a040;outline-offset:4px}
     section{padding:42px 0;border-top:1px solid var(--border)}h2{font-size:1.8rem;margin:0 0 14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px}.card h3{margin-top:0}.muted{color:var(--muted)}ol{padding-left:1.2rem}li{margin:.6rem 0}.faq details{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 16px;margin:10px 0}.faq summary{font-weight:700;cursor:pointer}.footer{color:var(--muted);font-size:.9rem;padding:28px 0}
   </style>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"fold.pdf PDF Merger","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","url":"https://pdf-merger-sepia.vercel.app/merge-pdf.html","description":"Online PDF merger for combining PDFs and image files, visually reordering pages, removing pages, and exporting one PDF.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {"@context":"https://schema.org","@type":"WebApplication","name":"fold.pdf PDF Merger","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","isAccessibleForFree":true,"inLanguage":"en","url":"https://pdf-merger-sepia.vercel.app/merge-pdf.html","description":"Online PDF merger for combining PDFs and images, reordering, rotating and removing pages, and exporting one PDF.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
 </head>
 <body>
   <main class="wrap">
-    <nav class="nav"><div class="brand">fold<em>.</em>pdf</div><a class="cta" href="/tool.html?mode=merge">Open PDF Tool</a></nav>
+    <nav class="nav"><a class="brand" href="/">fold<em>.</em>pdf</a><a class="cta" href="/tool.html?mode=merge">Open PDF Tool</a></nav>
     <header class="hero">
       <div class="eyebrow">Free online PDF merger</div>
       <h1>Merge PDF files into one organized document</h1>
@@ -36,7 +36,7 @@
       <h2>How to merge PDFs with fold.pdf</h2>
       <ol>
         <li>Open the PDF tool and add two or more PDF or image files.</li>
-        <li>Use the visual page preview to drag pages into the order you want.</li>
+        <li>Use drag or the Move buttons to arrange pages, and rotate any page that is sideways.</li>
         <li>Remove unwanted pages, choose your output name, then merge and download.</li>
       </ol>
     </section>
@@ -44,7 +44,8 @@
       <h2>Built for more than basic PDF combining</h2>
       <div class="grid">
         <article class="card"><h3>Visual page reordering</h3><p class="muted">See page thumbnails before export and drag individual pages instead of guessing file order.</p></article>
-        <article class="card"><h3>PDF + image support</h3><p class="muted">Build one PDF from PDFs plus JPG, PNG, WEBP, TIFF and BMP image files.</p></article>
+        <article class="card"><h3>PDF + image support</h3><p class="muted">Build one PDF from PDFs plus JPG, PNG, and WebP images. <a href="/combine-pdf-and-images.html">See the full workflow.</a></p></article>
+        <article class="card"><h3>Rotate pages</h3><p class="muted">Turn individual pages in 90-degree steps before creating the final PDF.</p></article>
         <article class="card"><h3>Remove pages before export</h3><p class="muted">Delete unnecessary pages directly from the visual workspace before creating the final file.</p></article>
         <article class="card"><h3>No account required</h3><p class="muted">Start using the tool without creating an account or signing in.</p></article>
       </div>
@@ -56,11 +57,11 @@
     <section class="faq">
       <h2>PDF merger FAQ</h2>
       <details><summary>Can I reorder individual PDF pages?</summary><p>Yes. After loading your files, the visual workspace lets you drag individual page thumbnails into a new order before exporting.</p></details>
-      <details><summary>Can I combine images with PDFs?</summary><p>Yes. The tool supports common image formats including JPG, PNG, WEBP, TIFF and BMP alongside PDF files.</p></details>
+      <details><summary>Can I combine images with PDFs?</summary><p>Yes. The tool supports JPG, PNG, and WebP images alongside PDF files.</p></details>
       <details><summary>Do I need an account?</summary><p>No account is required to use the merger.</p></details>
       <details><summary>Can I remove pages before merging?</summary><p>Yes. Remove unwanted pages from the preview, then merge the remaining pages into your finished PDF.</p></details>
     </section>
-    <footer class="footer">fold.pdf — merge, organize, split and sign PDF documents online.</footer>
+    <footer class="footer"><a href="/">Home</a> · <a href="/split-pdf.html">Split</a> · <a href="/sign-pdf.html">Sign</a> · <a href="/combine-pdf-and-images.html">PDF + Images</a> · <a href="/privacy.html">Privacy</a></footer>
   </main>
 </body>
 </html>

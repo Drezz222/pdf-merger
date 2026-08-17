@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Privacy | fold.pdf</title>
+  <meta name="description" content="How fold.pdf handles local files, remote URL and Google Drive imports, visual signatures, and third-party browser resources.">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://pdf-merger-sepia.vercel.app/privacy.html">
+  <style>
+    :root{--bg:#0e0d0b;--panel:#181714;--line:#2e2b25;--text:#e8e2d9;--muted:#aaa095;--accent:#f0a040}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,sans-serif;line-height:1.7}.wrap{width:min(820px,calc(100% - 36px));margin:auto}.nav{display:flex;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}.brand{margin-right:auto;font:italic 24px Georgia,serif}.brand em{color:var(--accent);font-style:normal}a{color:var(--accent)}h1,h2{font-family:Georgia,serif;font-style:italic;font-weight:500}h1{font-size:clamp(3rem,8vw,5rem);line-height:1;margin:72px 0 20px}h2{font-size:1.8rem;margin:0 0 8px}.lead,.muted{color:var(--muted)}section{padding:30px 0;border-top:1px solid var(--line)}.note{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}.footer{padding:36px 0;color:var(--muted)}a:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav class="nav" aria-label="Main navigation"><a class="brand" href="/">fold<em>.</em>pdf</a><a href="/merge-pdf.html">Merge</a><a href="/split-pdf.html">Split</a><a href="/sign-pdf.html">Sign</a></nav>
+    <main>
+      <h1>Privacy at fold.pdf</h1>
+      <p class="lead">The privacy path depends on how you add a file. This page separates local device processing from optional remote imports so you can choose appropriately.</p>
+      <section><h2>Files selected from your device</h2><p>When you choose PDFs or supported images from your device, fold.pdf processes those files in your browser. The application does not intentionally upload those local file bytes to a fold.pdf document-processing server. Merging, splitting, page organization, and visual-signature placement are performed with browser-side PDF libraries.</p></section>
+      <section><h2>URL and Google Drive imports</h2><p>If you use Import from URL or Google Drive, the link is sent to a fold.pdf serverless proxy. The proxy retrieves the remote document and returns it to your browser. The document therefore transits the hosting provider, and the URL—including a Drive ID or signed-link token—may be visible in ordinary hosting or request logs. The proxy sends no-store cache headers, but this repository does not define the hosting provider’s log retention.</p><p class="note"><strong>Most private workflow:</strong> download the remote document yourself, then select that local file in fold.pdf.</p></section>
+      <section><h2>Remote-import safeguards</h2><p>The proxy accepts HTTPS PDF, JPG, PNG, and WebP responses, limits redirects, blocks resolved private and local network addresses, applies a timeout and size cap, validates response types, and does not expose wildcard cross-origin access. These controls reduce abuse; they are not malware scanning and cannot guarantee that every remote file is safe.</p></section>
+      <section><h2>Visual signatures</h2><p>Sign mode creates a reusable image of what you draw or type and embeds that image into the exported PDF. It does not verify identity, create a certificate-based signature, provide tamper evidence, or encrypt the file. Exporting a modified PDF can invalidate an existing cryptographic signature.</p></section>
+      <section><h2>Third-party browser resources</h2><p>The public pages may request fonts from Google Fonts. The workspace loads pinned PDF libraries and a PDF worker from cdnjs. Those providers receive ordinary web-request information such as an IP address and browser headers; they do not intentionally receive your locally selected document from the application.</p></section>
+      <section><h2>Clearing the workspace</h2><p>Clear all removes files, page state, placed signatures, and the current signature from the interface and releases browser object URLs and PDF.js document resources. Browser JavaScript cannot promise forensic or secure memory erasure; closing the tab is the strongest practical end to the session.</p></section>
+    </main>
+    <footer class="footer"><a href="/">Home</a> · <a href="/tool.html">PDF workspace</a></footer>
+  </div>
+</body>
+</html>
